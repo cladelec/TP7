@@ -11,5 +11,9 @@ class String {
 		String();
 		//String(int taille, char* chaine);
 		
+		//getters
+		int get_taille();
+		char* get_chaine();
+		int get_capacite();
 
 } ;
