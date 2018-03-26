@@ -7,6 +7,12 @@ String::String() {
 	capacite_=0;
 }
 
+bool String::empty() {
+	if (taille_==0) {
+		return true ;
+	}
+	return false ;
+}
 
 /*
 String::String(int taille, char* chaine) {

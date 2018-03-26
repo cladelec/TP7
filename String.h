@@ -11,5 +11,6 @@ class String {
 		String();
 		//String(int taille, char* chaine);
 		
+		bool empty() ;
 
 } ;
