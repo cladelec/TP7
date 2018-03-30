@@ -15,8 +15,8 @@ class String {
 		bool empty();
 		
 		//getters
-		int get_taille();
+		int length();
 		char* get_chaine();
-		int get_capacite();
+		int capacity();
 
 } ;
