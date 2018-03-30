@@ -34,14 +34,27 @@ int String::capacity(){
 	return capacite_;
 }
 
-String operator+(String s1,String s2) {
-	return s1 ;
+/*String operator+(String s1,String s2) {
+	char* s=new char[s1.size_+s2.size_]; 
+	for (int i=0;i<s1.taille_;i++) {
+		s[i]=*(s1.chaine_)[i];
+	} 
+	for (int i=s1.size+1;i<s1.size+s2.size;i++) {
+		s[i]=*(s2.chaine_)[i];
+	}
+	String ch=new String ;
+	ch String(&s)
+	return ch;
 }
 
 bool operator==(String s1, char* c1) {
-	return true ;
+	ret=true;
+	for (i=0;i<s1.size();++i){
+	
+	}
 
 }
+*/
 
 int String::size(){
   return taille_;
