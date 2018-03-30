@@ -17,5 +17,8 @@ class String {
 		int length();
 		char* get_chaine();
 		int capacity();
+		
+		//operateurs
+		String +(String s1,String s2) ;
 
 } ;

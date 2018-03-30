@@ -31,6 +31,11 @@ int String::capacity(){
 	return capacite_;
 }
 
-int String::length(){
-  return taille_;
+String operator+(String s1,String s2) {
+	return s1 ;
+}
+
+bool operator==(String s1, char* c1) {
+	return true ;
+
 }
