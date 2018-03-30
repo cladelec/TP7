@@ -9,6 +9,7 @@ class String {
 	public :
 		//constructeurs
 		String();
+		//String(String s);
 		//String(int taille, char* chaine);
 
 		bool empty();
@@ -16,7 +17,6 @@ class String {
 		//getters
 		int length();
 		char* get_chaine();
-		int get_capacite();
+		int capacity();
 		int max_size();
-
 } ;
