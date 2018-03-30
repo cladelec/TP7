@@ -6,12 +6,12 @@ String::String() {
 	chaine_=nullptr;
 	capacite_=0;
 }
-/*constructeur par copie
+//constructeur par copie
 String::String(String s){
 	taille_=s.length();
 	chaine_=s.c_str();
 	capacite_=s.capacity()
-}*/
+}
 
 bool String::empty() {
 	if (taille_==0) {
@@ -26,7 +26,7 @@ String::String(int taille, char* chaine) {
 }*/
 
 //getters 
-char* String::get_chaine(){
+char* String::c_str(){
 	return chaine_;
 }
 
@@ -35,5 +35,9 @@ int String::capacity(){
 }
 
 int String::length(){
+  return taille_;
+}
+
+int String::size(){
   return taille_;
 }
