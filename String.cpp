@@ -8,6 +8,9 @@ String::String() {
 }
 /*constructeur par copie
 String::String(String s){
+	taille_=s.length();
+	chaine_=s.c_str();
+	capacite_=s.capacity()
 }*/
 
 bool String::empty() {
