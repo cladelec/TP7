@@ -23,14 +23,10 @@ String::String(int taille, char* chaine) {
 }*/
 
 //getters 
-int String::get_taille(){
-	return taille_;
-}
-
 char* String::get_chaine(){
 	return chaine_;
 }
 
-int String::get_capacite(){
+int String::capacity(){
 	return capacite_;
 }
