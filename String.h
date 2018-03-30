@@ -10,6 +10,8 @@ class String {
 		//constructeurs
 		String();
 		//String(int taille, char* chaine);
+
+		bool empty();
 		
 		//getters
 		int get_taille();

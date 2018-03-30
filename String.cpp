@@ -6,11 +6,16 @@ String::String() {
 	chaine_=nullptr;
 	capacite_=0;
 }
-
 /*constructeur par copie
 String::String(String s){
 }*/
 
+bool String::empty() {
+	if (taille_==0) {
+		return true ;
+	}
+	return false ;
+}
 /*
 String::String(int taille, char* chaine) {
 	taille_=taille;
