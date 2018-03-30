@@ -9,16 +9,19 @@ class String {
 	public :
 		//constructeurs
 		String();
+		String(String s);
 		//String(int taille, char* chaine);
 
 		bool empty();
 		
 		//getters
 		int length();
-		char* get_chaine();
+		int size();
+		char* c_str();
 		int capacity();
 		
 		//operateurs
 		String +(String s1,String s2) ;
+
 
 } ;
