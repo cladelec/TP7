@@ -30,3 +30,7 @@ char* String::get_chaine(){
 int String::capacity(){
 	return capacite_;
 }
+
+int String::length(){
+  return taille_;
+}
