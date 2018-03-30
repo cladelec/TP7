@@ -34,3 +34,7 @@ int String::get_capacite(){
 int String::length(){
   return taille_;
 }
+
+int String::max_size(){
+  return MAX_SIZE;
+  }

@@ -17,5 +17,6 @@ class String {
 		int length();
 		char* get_chaine();
 		int get_capacite();
+		int max_size();
 
 } ;
