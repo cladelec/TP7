@@ -6,12 +6,12 @@ String::String() {
 	chaine_=nullptr;
 	capacite_=0;
 }
-/*constructeur par copie
+//constructeur par copie
 String::String(String s){
 	taille_=s.length();
 	chaine_=s.c_str();
 	capacite_=s.capacity()
-}*/
+}
 
 bool String::empty() {
 	if (taille_==0) {
@@ -41,3 +41,6 @@ int String::length(){
 int String::max_size(){
   return MAX_SIZE;
   }
+int String::size(){
+  return taille_;
+}
