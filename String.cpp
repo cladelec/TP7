@@ -7,11 +7,11 @@ String::String() {
 	capacite_=0;
 }
 //constructeur par copie
-String::String(String s){
+/*String::String(String s){
 	taille_=s.length();
 	chaine_=s.c_str();
 	capacite_=s.capacity()
-}
+}*/
 
 bool String::empty() {
 	if (taille_==0) {
@@ -19,11 +19,13 @@ bool String::empty() {
 	}
 	return false ;
 }
-/*
-String::String(int taille, char* chaine) {
-	taille_=taille;
-	chaine_=chaine;
-}*/
+
+void String::destructor() {
+	taille_=0;
+	capacite_=0;
+	delete chaine_;
+
+}
 
 //getters 
 char* String::c_str(){
@@ -59,3 +61,9 @@ bool operator==(String s1, char* c1) {
 int String::size(){
   return taille_;
 }
+
+
+int String::length(){
+  return taille_;
+}
+

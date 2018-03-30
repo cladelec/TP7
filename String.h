@@ -9,10 +9,11 @@ class String {
 	public :
 		//constructeurs
 		String();
-		String(String s);
+		//String(String s);
 		//String(int taille, char* chaine);
 
 		bool empty();
+		void destructor() ;
 		
 		//getters
 		int length();
@@ -21,7 +22,8 @@ class String {
 		int capacity();
 		
 		//operateurs
-		String +(String s1,String s2) ;
+		//String operator+(String s1,String s2) ;
+		//bool operator==(String s1, char* c1) ;
 
 
 } ;
