@@ -5,6 +5,8 @@
 int main () {
 	printf("Hello world \n") ;
 	
-	String s1() ;
+	String s;
+	printf("%d \n",s.length());
+	
 
 }

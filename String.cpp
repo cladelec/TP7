@@ -13,3 +13,8 @@ String::String(int taille, char* chaine) {
 	taille_=taille;
 	chaine_=chaine;
 }*/
+
+int String::length(){
+  return taille_;
+}
+  

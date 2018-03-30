@@ -10,6 +10,6 @@ class String {
 		//constructeurs
 		String();
 		//String(int taille, char* chaine);
-		
+		int length();
 
 } ;
