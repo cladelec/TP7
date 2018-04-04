@@ -20,11 +20,10 @@ bool String::empty() {
 	return false ;
 }
 
-void String::destructor() {
+String::~String() {
 	taille_=0;
 	capacite_=0;
 	delete chaine_;
-
 }
 
 //getters 

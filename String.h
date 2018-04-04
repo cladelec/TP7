@@ -13,7 +13,7 @@ class String {
 		//String(int taille, char* chaine);
 
 		bool empty();
-		void destructor() ;
+		~String() ; //destructeur
 		
 		//getters
 		int length();
