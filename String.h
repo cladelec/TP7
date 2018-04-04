@@ -21,6 +21,7 @@ class String {
 		char* c_str();
 		int capacity();
 		
+		void reserve(int taille) ;
 		//operateurs
 		//String operator+(String s1,String s2) ;
 		//bool operator==(String s1, char* c1) ;

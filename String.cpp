@@ -66,3 +66,40 @@ int String::length(){
   return taille_;
 }
 
+void String::reserve(int taille) {
+	capacite_=taille;
+	char* nchaine=new char[taille];
+	char current=chaine_[0] ;
+	int i=0 ;
+	while (current!='\0') {
+		nchaine[i]=chaine_[i] ;
+		i=i+1;
+		current=chaine_[i] ;
+	}
+	nchaine[i]='\0';
+	delete chaine_ ;
+	chaine_=nchaine;	
+	
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
