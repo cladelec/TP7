@@ -31,8 +31,8 @@ class String {
 		void operator=(String s);
 		//void operator+(char c);
 		//operateurs
-		//String operator+(String s1) ;
-		//bool operator==(String s1, char* c1) ;
+		//String operator+(const String s1) ;
+		String& operator=(const char* c1) ;
 
 
 } ;
