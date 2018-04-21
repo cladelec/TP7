@@ -40,7 +40,7 @@ size_t String::capacity(){
 	return capacite_;
 }
 
-/*String String::operator+(String s1,String s2) {
+/*String String::operator+(const String s1,const String s2) {
 	String result=String(s1) ;
 	
 	for (int i=0;i<s1.size();i++) {
@@ -54,13 +54,22 @@ size_t String::capacity(){
 	return ch;
 }
 */
-/*bool operator==(String s1, char* c1) {
-	ret=true;
-	for (i=0;i<s1.size();++i){
-	
-	}
 
-}*/
+String& String::operator=(const char* c1) {
+	int i=0;
+	while(c1[i]!='\0') {
+		++i;
+	}
+	taille_=i-1;
+	capacite_=i*2;
+	delete[] chaine_;
+	
+	chaine_=new char[capacite_] ;
+	
+	for(int i=0;i<taille_;i++) {	
+		chaine_[i]=c1[i] ;
+	}
+}
 
 
 size_t String::size(){
