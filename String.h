@@ -17,8 +17,7 @@ class String {
 		String();
 		String(const String &s);
 		//String(int taille, char* chaine);
-
-		bool empty();
+		
 		~String() ; //destructeur
 		
 		//getters
@@ -28,6 +27,7 @@ class String {
 		size_t capacity();
 		
 		void reserve(size_t taille) ;
+		bool empty();
 		
 		//operateurs
 		friend String operator+(const String& s1, const String& s2) ;
