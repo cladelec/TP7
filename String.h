@@ -10,14 +10,15 @@ class String {
 		size_t taille_;
 		char* chaine_;
 		size_t capacite_;
-		static int MAX_SIZE;
+		static size_t MAX_SIZE;
 		
 	public :
 		//constructeurs
 		String();
 		String(const String &s);
 		//String(int taille, char* chaine);
-		
+
+		bool empty();
 		~String() ; //destructeur
 		
 		//getters
@@ -31,6 +32,8 @@ class String {
 		
 		//operateurs
 		friend String operator+(const String& s1, const String& s2) ;
+		void operator=(String s);
+		//void operator+(char c);
 		String& operator=(const char* c1) ;
 
 

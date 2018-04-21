@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
-int String::MAX_SIZE=100;
+size_t String::MAX_SIZE=100;
 
 String::String() {
 	taille_=0;
@@ -27,7 +27,7 @@ String::String(const String &s){
 String::~String() {
 	taille_=0;
 	capacite_=0;
-	delete chaine_; 
+	delete chaine_;
 }
 
 //getters 
@@ -39,7 +39,6 @@ size_t String::capacity(){
 	return capacite_;
 }
 
-
 size_t String::size(){
   return taille_;
 }
@@ -47,6 +46,24 @@ size_t String::size(){
 
 size_t String::length(){
   return taille_;
+}
+
+
+
+String& String::operator=(const char* c1) {
+	int i=0;
+	while(c1[i]!='\0') {
+		++i;
+	}
+	taille_=i-1;
+	capacite_=i*2;
+	delete[] chaine_;
+	
+	chaine_=new char[capacite_] ;
+	
+	for(int i=0;i<taille_;i++) {	
+		chaine_[i]=c1[i] ;
+	}
 }
 
 //Regarde si le string est vide, retourne true si c'est le cas.
@@ -112,7 +129,18 @@ String& String::operator=(const char* c1) {
 }
 
 
+void String::operator=(String s){
+	delete chaine_;
+	taille_=s.size();
+	chaine_=s.c_str();
+	capacite_=s.capacity();
+}
 
+/*void String::operator+(char c){
+	taille_=taille_+1;
+	chaine_=;
+	capacite_=0;
+}*/
 
 
 
