@@ -10,13 +10,17 @@ String::String() {
 	chaine_=nullptr;
 	capacite_=0;
 }
-
 //constructeur par copie
-/*String::String(String s){
-	taille_=s.length();
-	chaine_=s.c_str();
-	capacite_=s.capacity()
-}*/
+String::String(const String &s){
+	taille_=s.taille_;
+	capacite_=s.capacite_;
+	int i;
+	char* tab =new char[capacite_];
+  for (i=0;i<taille_;++i){
+  	tab[i] = s.chaine_[i];
+	}
+  tab[taille_] = '\0';
+}
 
 bool String::empty() {
 	if (taille_==0) {
@@ -40,20 +44,18 @@ size_t String::capacity(){
 	return capacite_;
 }
 
-/*String String::operator+(const String s1,const String s2) {
+String operator+(const String& s1,const String& s2) {
 	String result=String(s1) ;
+	result.taille_=s1.taille_+s2.taille_;
+	result.capacite_=s1.capacite_+s2.capacite_;
 	
-	for (int i=0;i<s1.size();i++) {
-		s[i]=*(s1.c_str())[i];
-	} 
-	for (int i=s1->size+1;i<s1.size()+this.size();i++) {
-		s[i]=*(this.chaine_)[i];
+	for (int i=s1.taille_+1;i<result.taille_;i++) {
+		result.chaine_[i]=s2.chaine_[i];
 	}
-	String ch=new String ;
-	ch String(&s)
-	return ch;
+	
+	return result;
 }
-*/
+
 
 String& String::operator=(const char* c1) {
 	int i=0;

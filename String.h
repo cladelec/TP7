@@ -15,7 +15,7 @@ class String {
 	public :
 		//constructeurs
 		String();
-		//String(String s);
+		String(const String &s);
 		//String(int taille, char* chaine);
 
 		bool empty();
@@ -30,10 +30,12 @@ class String {
 		void reserve(size_t taille) ;
 		
 		//operateurs
-		//String operator+(const String s1) ;
+		friend String operator+(const String& s1, const String& s2) ;
 		String& operator=(const char* c1) ;
 
 
 } ;
+
+String operator+(const String& s1, const String& s2) ;
 
 #endif
