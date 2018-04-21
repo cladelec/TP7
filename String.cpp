@@ -7,11 +7,16 @@ String::String() {
 	capacite_=0;
 }
 //constructeur par copie
-/*String::String(String s){
-	taille_=s.length();
-	chaine_=s.c_str();
-	capacite_=s.capacity()
-}*/
+String::String(const String &s){
+	taille_=s.taille_;
+	capacite_=s.capacite_;
+	int i;
+	char* tab =new char[capacite_];
+  for (i=0;i<taille_;++i){
+  	tab[i] = s.chaine_[i];
+	}
+  tab[taille_] = '\0';
+}
 
 bool String::empty() {
 	if (taille_==0) {
