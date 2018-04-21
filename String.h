@@ -10,7 +10,7 @@ class String {
 		size_t taille_;
 		char* chaine_;
 		size_t capacite_;
-		static int MAX_SIZE;
+		static size_t MAX_SIZE;
 		
 	public :
 		//constructeurs
@@ -28,6 +28,8 @@ class String {
 		size_t capacity();
 		
 		void reserve(size_t taille) ;
+		void operator=(String s);
+		//void operator+(char c);
 		//operateurs
 		//String operator+(String s1) ;
 		//bool operator==(String s1, char* c1) ;

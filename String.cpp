@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
-int String::MAX_SIZE=100;
+size_t String::MAX_SIZE=100;
 
 String::String() {
 	taille_=0;
@@ -67,11 +67,22 @@ size_t String::capacity(){
 
 }*/
 
+void String::operator=(String s){
+	delete chaine_;
+	taille_=s.size();
+	chaine_=s.c_str();
+	capacite_=s.capacity();
+}
+
+/*void String::operator+(char c){
+	taille_=taille_+1;
+	chaine_=;
+	capacite_=0;
+}*/
 
 size_t String::size(){
   return taille_;
 }
-
 
 size_t String::length(){
   return taille_;
@@ -89,28 +100,5 @@ void String::reserve(size_t taille) {
 	}
 	nchaine[i]='\0';
 	delete chaine_ ;
-	chaine_=nchaine;	
-	
+	chaine_=nchaine;
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
