@@ -1,4 +1,8 @@
 #include "String.h"
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
 int String::MAX_SIZE=100;
 
 String::String() {
@@ -6,6 +10,7 @@ String::String() {
 	chaine_=nullptr;
 	capacite_=0;
 }
+
 //constructeur par copie
 /*String::String(String s){
 	taille_=s.length();
@@ -31,42 +36,43 @@ char* String::c_str(){
 	return chaine_;
 }
 
-int String::capacity(){
+size_t String::capacity(){
 	return capacite_;
 }
 
-/*String operator+(String s1,String s2) {
-	char* s=new char[s1.size_+s2.size_]; 
-	for (int i=0;i<s1.taille_;i++) {
-		s[i]=*(s1.chaine_)[i];
+/*String String::operator+(String s1,String s2) {
+	String result=String(s1) ;
+	
+	for (int i=0;i<s1.size();i++) {
+		s[i]=*(s1.c_str())[i];
 	} 
-	for (int i=s1.size+1;i<s1.size+s2.size;i++) {
-		s[i]=*(s2.chaine_)[i];
+	for (int i=s1->size+1;i<s1.size()+this.size();i++) {
+		s[i]=*(this.chaine_)[i];
 	}
 	String ch=new String ;
 	ch String(&s)
 	return ch;
 }
-
-bool operator==(String s1, char* c1) {
+*/
+/*bool operator==(String s1, char* c1) {
 	ret=true;
 	for (i=0;i<s1.size();++i){
 	
 	}
 
-}
-*/
+}*/
 
-int String::size(){
+
+size_t String::size(){
   return taille_;
 }
 
 
-int String::length(){
+size_t String::length(){
   return taille_;
 }
 
-void String::reserve(int taille) {
+void String::reserve(size_t taille) {
 	capacite_=taille;
 	char* nchaine=new char[taille];
 	char current=chaine_[0] ;
