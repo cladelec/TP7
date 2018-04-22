@@ -15,14 +15,14 @@ String::String() {
 String::String(char* ch){
   
   size_t i = 0;
-  while (ch[i] != '\0') {
+  while (ch[i] != '\0') { //calcul taille
     ++i;
     }
-  taille_ = i;
+  taille_ = i; //attributs du string définis par rapport au char*
   capacite_ = taille_*2;
   chaine_ = new char[capacite_ +1];
   for (int j =0; j < taille_; j++){
-    chaine_[j] = ch[j];
+    chaine_[j] = ch[j]; //valeurs du char* dans la chaine de string
     } 
 }
   
@@ -61,29 +61,29 @@ size_t String::capacity(){
 }
 
 size_t String::length(){
-  return taille_;
+  return taille_; //retourne l'attribut taille
 }
 
 size_t String::max_size(){
-  return MAX_SIZE;
+  return MAX_SIZE; //retourne la taille maximale
   }
 
 size_t String::size(){
-  return taille_;
+  return taille_; //retourne l'attribut taille
 }
 
-void String::resize (size_t n, char c){
-  if (n<taille_){
-    chaine_[n] = '\0';
-    taille_ =n;
-    }
-  else if (n>taille_){
+//Redimensionne la chaîne à une longueur de n caractères.
+void String::resize (size_t n){ //si n plus petit que la taille du string de départ
+  chaine_[n] = '\0';
+  taille_ =n;
+}
+
+void String::resize (size_t n, char c){//si n plus grand que la taille de départ, complète toutes les cases vides par la caractère c
     for( int i = taille_; i<=n; i++){
       reserve(n*2);
       chaine_[i] = c;
       taille_ =n;
-      }
-  }
+    }
 }  
 
 //Regarde si le string est vide, retourne true si c'est le cas.
@@ -116,7 +116,7 @@ void String::reserve(size_t taille) {
 	
 } 
 
-
+//Efface le contenu de la chaîne
 void String::clear(){
 	taille_=0;
 	chaine_[0]='\0';
@@ -204,6 +204,7 @@ String operator+(const String& str, char c){
 	return s;
 }
 
+//Affecte une nouvelle valeur à la chaîne, en remplaçant son contenu actuel par un caractère
 String& String::operator= (const char s){
 	taille_=1;
 	capacite_=2;
@@ -214,6 +215,7 @@ String& String::operator= (const char s){
 	chaine_[1]='\0';
 }
 
+//Renvoie un objet chaîne nouvellement construit dont la valeur est la concaténation d'un string et d'un char*
 String operator+(const String& str, char* c) {
   String result=String(str) ; 
   size_t i = 0;

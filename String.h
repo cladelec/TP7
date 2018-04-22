@@ -31,6 +31,7 @@ class String {
 		bool empty();
 		void clear();
 		void affichage() ; //méthode de test
+		void resize (size_t n);
 		void resize (size_t n, char c) ;
 		
 

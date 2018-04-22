@@ -70,7 +70,9 @@ int main () {
 	s8=s4+c1; //test Operateur +(char)
 	s8.affichage(); // affiche bien abcd
   
-  s6.resize(5,'a'); //test resize
+  s6.resize(9,'d'); //test resize 8>taille
+	s6.affichage();
+  s6.resize(5); //test resize 5<taille
 	s6.affichage();
 	
 	String s9(s6);
