@@ -13,7 +13,7 @@ String::String() {
 
 //constructeur par copie
 String::String(const String &s){
-	//Le nouveau string aura le même...
+	//
 	taille_=s.taille_;
 	capacite_=s.capacite_;
 	int i;
@@ -77,27 +77,37 @@ String& String::operator=(const char* c1) {
 		chaine_[i]=c1[i] ;
 	}
 }
+
 String& String::operator= (const String& str){
+	// on supprime la chaine qui a été créée pour ne pas avoir de fuite mémoire
 	delete chaine_;
+	// on donne les mêmes valeurs des attributs 
 	taille_=str.taille_;
-	chaine_=str.chaine_;
 	capacite_=str.capacite_;
+	char* newstr = new char [capacite_];
+	int i;
+	for (i=0;i<taille_;++i){
+  	newstr[i] = str.chaine_[i];
+	}
+	newstr[taille_+1] = '\0';
+	chaine_=newstr;
+	return *this;
 }
 
 String operator+(const String& str, char c){
-	if(str.capacite_>=str.taille_+1){
-		String s(str);
+	String s(str);
+	if(str.capacite_>=str.taille_+2){
 		s.taille_=s.taille_+1;
-		s.chaine_[s.taille_-1]=c;
-		s.chaine_[s.taille_]='\0';
+		s.chaine_[s.taille_]=c;
+		s.chaine_[s.taille_+1]='\0';
 	}
 	else{
-		String s(str);
-		s.capacite_=s.capacite_+1;
+		s.reserve(s.taille_+2);
 		s.taille_=s.taille_+1;
-		s.chaine_[s.taille_-1]=c;
-		s.chaine_[s.taille_]='\0';
+		s.chaine_[s.taille_]=c;
+		s.chaine_[s.taille_+1]='\0';
 	}
+	return s;
 }
 
 void String::clear(){
