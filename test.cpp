@@ -53,7 +53,9 @@ int main () {
 	printf("%d \n",s6.capacity());
 	printf("%d \n",s6.size()); //test size()
 	printf("%s \n",s6.c_str()); //test c_str() <-> méthode affichage
-
+  printf("%d \n",s6.length()); //test length()
+	printf("%d \n",s6.max_size()); //test max_size()
+	
 	s5.clear(); // test clear()
 	s5.affichage(); // affiche un vide -> plus rien dans tableau (car 1er terme = \0)
 	
@@ -67,5 +69,17 @@ int main () {
 	String s8; // nouveau String (par défaut)
 	s8=s4+c1; //test Operateur +(char)
 	s8.affichage(); // affiche bien abcd
-
+  
+  s6.resize(5,'a'); //test resize
+	s6.affichage();
+	
+	String s9(s6);
+	s9.affichage();
+	s9=c1; // test Operateur =(char)
+	s9.affichage();
+	
+	String s10;
+	char tab3[]="ebat";
+	s10=s9+tab3; //test Operateur +(char*)
+	s10.affichage();
 }

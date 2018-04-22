@@ -221,7 +221,7 @@ String operator+(const String& str, char* c) {
     ++i;
     }
 	result.taille_=str.taille_+i; 
-	result.reserve(str.capacite_+i*2); 
+	result.reserve(result.taille_*2); 
 	for (int j=0;j<i+1;j++) { 
 		result.chaine_[str.taille_+j]=c[j]; 
 	}
