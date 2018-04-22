@@ -13,6 +13,7 @@ String::String() {
 
 //constructeur par copie
 String::String(const String &s){
+	Le nouveau string aura le même
 	taille_=s.taille_;
 	capacite_=s.capacite_;
 	int i;
@@ -75,19 +76,34 @@ String& String::operator=(const char* c1) {
 		chaine_[i]=c1[i] ;
 	}
 }
-
-void String::operator=(String s){
+String& String::operator= (const String& str){
 	delete chaine_;
-	taille_=s.size();
-	chaine_=s.c_str();
-	capacite_=s.capacity();
+	taille_=str.taille_;
+	chaine_=str.chaine_;
+	capacite_=str.capacite_;
 }
 
-/*void String::operator+(char c){
-	taille_=taille_+1;
-	chaine_=;
-	capacite_=0;
-}*/
+String operator+(const String& str, char c){
+	if(str.capacite_>=str.taille_+1){
+		String s(str);
+		s.taille_=s.taille_+1;
+		s.chaine_[s.taille_-1]=c;
+		s.chaine_[s.taille_]='\0';
+	}
+	else{
+		String s(str);
+		s.capacite_=s.capacite_+1;
+		s.taille_=s.taille_+1;
+		s.chaine_[s.taille_-1]=c;
+		s.chaine_[s.taille_]='\0';
+	}
+}
+
+void String::clear(){
+	taille_=0;
+	chaine_=nullptr;
+	capacite_=1;
+}
 
 size_t String::size(){
   return taille_;

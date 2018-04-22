@@ -28,13 +28,14 @@ class String {
 		size_t capacity();
 		
 		void reserve(size_t taille) ;
-		void operator=(String s);
-		//void operator+(char c);
+
 		//operateurs
+		String& operator= (const String& str);
+		friend String operator+(const String& str, char c);
 		//String operator+(const String s1) ;
 		String& operator=(const char* c1) ;
 
 
 } ;
-
+String operator+(const String& str, char c);
 #endif
