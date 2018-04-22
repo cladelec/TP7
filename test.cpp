@@ -1,9 +1,10 @@
 #include <iostream>
 #include "String.h"
-
+#include <cstdio>
+#include <cstdlib>
 
 int main () {
-	printf("Hello world \n") ;
+	printf("Hello world \n");
 	
 	String s;
 	printf("%d \n",s.length());

@@ -1,25 +1,39 @@
+#ifndef STRING_H_
+#define STRING_H_
+
+#include <cstdio>
+#include <cstdlib>
+
 class String {
 	protected :
 		//attributs
-		int taille_;
+		size_t taille_;
 		char* chaine_;
-		int capacite_;
-		static int MAX_SIZE;
+		size_t capacite_;
+		static size_t MAX_SIZE;
 		
 	public :
 		//constructeurs
 		String();
-		//String(String s);
+		String(const String &s);
 		String(char* ch);
-		//String(int taille, char* chaine);
 
 		bool empty();
 		
 		//getters
-		int length();
-		char* get_chaine();
-		int size();
+		size_t length();
+		size_t size();
 		char* c_str();
-		int capacity();
-		int max_size();
+		size_t capacity();
+		
+		void reserve(size_t taille) ;
+		void operator=(String s);
+		//void operator+(char c);
+		//operateurs
+		//String operator+(const String s1) ;
+		String& operator=(const char* c1) ;
+
+
 } ;
+
+#endif
