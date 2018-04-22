@@ -17,7 +17,8 @@ class String {
 		String();
 		String(const String &s);
 		//String(int taille, char* chaine);
-
+		
+		void clear();
 		bool empty();
 		~String() ; //destructeur
 		
@@ -32,8 +33,8 @@ class String {
 		//operateurs
 		String& operator= (const String& str);
 		friend String operator+(const String& str, char c);
-		//String operator+(const String s1) ;
-		String& operator=(const char* c1) ;
+		String operator+(const String s1);
+		String& operator=(const char* c1);
 
 
 } ;

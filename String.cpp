@@ -13,15 +13,16 @@ String::String() {
 
 //constructeur par copie
 String::String(const String &s){
-	Le nouveau string aura le même
+	//Le nouveau string aura le même...
 	taille_=s.taille_;
 	capacite_=s.capacite_;
 	int i;
-	char* tab =new char[capacite_];
+	char* chain =new char[capacite_];
   for (i=0;i<taille_;++i){
-  	tab[i] = s.chaine_[i];
+  	chain[i] = s.chaine_[i];
 	}
-  tab[taille_] = '\0';
+  chain[taille_+1] = '\0';
+	chaine_=chain;
 }
 
 bool String::empty() {
@@ -101,8 +102,7 @@ String operator+(const String& str, char c){
 
 void String::clear(){
 	taille_=0;
-	chaine_=nullptr;
-	capacite_=1;
+	chaine_[0]='\0';
 }
 
 size_t String::size(){
