@@ -74,17 +74,31 @@ size_t String::capacity(){
 	return capacite_;
 }
 
-int String::length(){
+size_t String::length(){
   return taille_;
 }
 
-int String::max_size(){
+size_t String::max_size(){
   return MAX_SIZE;
   }
-int String::size(){
+size_t String::size(){
   return taille_;
 }
 
+void String::resize (size_t n, char c){
+  if (n<taille_){
+    chaine_[n] = '\0';
+    taille_ =n;
+    }
+  else if (n>taille_){
+    for( int i = taille_; i<=n; i++){
+      reserve(n*2);
+      chaine_[i] = c;
+      taille_ =n;
+      }
+  }
+ }
+      
 /*String String::operator+(const String s1,const String s2) {
 	String result=String(s1) ;
 	
