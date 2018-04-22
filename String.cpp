@@ -17,17 +17,16 @@ String::String(char* ch){
   size_t i = 0;
   while (ch[i] != '\0') {
     ++i;
-  }
-    
+    }
   taille_ = i;
   capacite_ = taille_*2;
   chaine_ = new char[capacite_ +1];
   
   for (int j =0; j < taille_; j++){
     chaine_[j] = ch[j];
-  }  
+    } 
 }
-
+  
 //constructeur par copie
 String::String(const String &s){
 	//Le nouveau string aura le même...
@@ -59,15 +58,31 @@ size_t String::capacity(){
 	return capacite_;
 }
 
+size_t String::length(){
+  return taille_;
+}
+
+size_t String::max_size(){
+  return MAX_SIZE;
+  }
 
 size_t String::size(){
   return taille_;
 }
 
-
-size_t String::length(){
-  return taille_;
-}
+void String::resize (size_t n, char c){
+  if (n<taille_){
+    chaine_[n] = '\0';
+    taille_ =n;
+    }
+  else if (n>taille_){
+    for( int i = taille_; i<=n; i++){
+      reserve(n*2);
+      chaine_[i] = c;
+      taille_ =n;
+      }
+  }
+ }
 
 //Regarde si le string est vide, retourne true si c'est le cas.
 //pas de paramètres : la méthode s'applique directement au string à tester
@@ -115,6 +130,7 @@ void String::affichage() {
 }
 
 
+
 //OPERATEURS
 
 //additionne les deux string passés en paramètre. Retourne un nouveau string contenant les deux autresconcaténés.
@@ -157,7 +173,6 @@ String& String::operator= (const String& str){
 	delete chaine_;
 	// on donne les mêmes valeurs des attributs 
 	taille_=str.taille_;
-	chaine_=str.chaine_;
 	capacite_=str.capacite_;
 	char* newstr = new char [capacite_];
 	int i;
@@ -184,5 +199,4 @@ String operator+(const String& str, char c){
 	}
 	return s;
 }
-
 
