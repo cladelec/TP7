@@ -9,7 +9,8 @@ class String {
 	public :
 		//constructeurs
 		String();
-		String(String s);
+		//String(String s);
+		String(char* ch);
 		//String(int taille, char* chaine);
 
 		bool empty();
