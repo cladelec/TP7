@@ -11,16 +11,34 @@ String::String() {
 	capacite_=0;
 }
 
+//constructeur à partir d'une cstring
+String::String(char* ch){
+  
+  size_t i = 0;
+  while (ch[i] != '\0') {
+    ++i;
+  }
+    
+  taille_ = i;
+  capacite_ = taille_*2;
+  chaine_ = new char[capacite_ +1];
+  
+  for (int j =0; j < taille_; j++){
+    chaine_[j] = ch[j];
+  }  
+}
+
 //constructeur par copie
 String::String(const String &s){
 	taille_=s.taille_;
 	capacite_=s.capacite_;
 	int i;
-	char* tab =new char[capacite_];
+	char* chain =new char[capacite_];
   for (i=0;i<taille_;++i){
-  	tab[i] = s.chaine_[i];
+  	chain[i] = s.chaine_[i];
 	}
-  tab[taille_] = '\0';
+  chain[taille_+1] = '\0';
+	chaine_=chain;
 }
 
 //destructeur : pas de pre-conditions ni de post-conditions
@@ -93,21 +111,26 @@ void String::clear(){
 //méthode de test
 void String::affichage() {
 	for (int i=0; i<taille_; ++i) {
-		printf("&c", chaine_[i]);
+		printf("%c", chaine_[i]);
 	}
 	printf("\n") ;
 }
 
 //OPERATEURS
 
-//additionne les deux string passés en paramètre. Retourne un nouveau string des deux concaténés.
+//additionne les deux string passés en paramètre. Retourne un nouveau string contenant les deux autresconcaténés.
 String operator+(const String& s1,const String& s2) {
 	String result=String(s1) ; //on copie le premier string dans un nouveau qui sera retourné
 	result.taille_=s1.taille_+s2.taille_; 
 	result.reserve(s1.capacite_+s2.capacite_); //change la taille et la memoire allouée pour accueillir la concaténation des deux
 	
-	for (int i=s1.taille_+1;i<result.taille_;i++) { //on ajoute la chaine du deuxieme string à la suite du premier
-		result.chaine_[i]=s2.chaine_[i]; //
+	/*size_t i=s1.taille_;
+	while(i<result.taille_) {
+		result.chaine_[i]=s2.chaine_[i]; 
+		++i ;
+	}*/
+	for (int i=0;i<s2.taille_+1;i++) { //on ajoute la chaine du deuxieme string à la suite du premier
+		result.chaine_[s1.taille_+i]=s2.chaine_[i]; 
 	}
 	
 	return result;
@@ -119,13 +142,13 @@ String& String::operator=(const char* c1) {
 	while(c1[i]!='\0') { //on regarde la taille du tableau de char
 		++i;
 	}
-	taille_=i-1;
+	taille_=i;
 	capacite_=i*2;
 	delete[] chaine_; //supprime l'ancienne chaine
 	
 	chaine_=new char[capacite_] ; //réalloue la mémoire
 	
-	for(int i=0;i<taille_;i++) { //copie le tableau dans la nouvelle chaine 
+	for(int i=0;i<taille_+1;i++) { //copie le tableau dans la nouvelle chaine 
 		chaine_[i]=c1[i] ;
 	}
 }

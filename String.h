@@ -16,7 +16,7 @@ class String {
 		//constructeurs
 		String();
 		String(const String &s);
-		//String(int taille, char* chaine);
+		String(char* ch);
 		
 		~String() ; //destructeur
 		
