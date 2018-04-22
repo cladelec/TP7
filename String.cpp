@@ -146,7 +146,7 @@ String& String::operator=(const String& str){
 	return *this;
 }
 
-// Renvoie un nouveau string dont la valeur est la concaténation d'un string existant et d'un caractère
+// Operateur +(char) : Renvoie un nouveau string dont la valeur est la concaténation d'un string existant et d'un caractère donnés en paramètre
 
 String operator+(const String& str, char c){
 	String s(str);
