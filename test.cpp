@@ -57,5 +57,5 @@ int main () {
 	s5.clear(); // test clear()
 	s5.affichage(); //renvoie un vide -> plus rien
 	
-
+  
 }
