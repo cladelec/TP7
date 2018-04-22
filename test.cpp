@@ -14,5 +14,5 @@ int main () {
 	
 	printf("%d \n",s1.empty()) ;
 	printf("%d \n",s1.capacity()) ;
-	
+	printf("%d \n",s.max_size());
 }

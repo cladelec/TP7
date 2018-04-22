@@ -16,12 +16,12 @@ class String {
 		//constructeurs
 		String();
 		String(const String &s);
-		//String(int taille, char* chaine);
-		
-		void clear();
+		String(char* ch);
+
 		bool empty();
 		~String() ; //destructeur
-		
+		void clear();
+
 		//getters
 		size_t length();
 		size_t size();
@@ -29,7 +29,7 @@ class String {
 		size_t capacity();
 		
 		void reserve(size_t taille) ;
-
+		
 		//operateurs
 		String& operator= (const String& str);
 		friend String operator+(const String& str, char c);

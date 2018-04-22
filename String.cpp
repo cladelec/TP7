@@ -11,6 +11,21 @@ String::String() {
 	capacite_=0;
 }
 
+//constructeur à partir d'une cstring
+String::String(char* ch){
+  
+  size_t i = 0;
+  while (ch[i] != '\0') {
+    ++i;
+    }
+  taille_ = i;
+  capacite_ = taille_*2;
+  chaine_ = new char[capacite_ +1];
+  for (int j =0; j < taille_; j++){
+    chaine_[j] = ch[j];
+    } 
+}
+  
 //constructeur par copie
 String::String(const String &s){
 	// les attributs du nouveau string ont les mêmes valeurs que le string dont l'adresse est passée en paramètre
@@ -25,6 +40,7 @@ String::String(const String &s){
 	chaine_=newchaine; //chaîne
 }
 
+
 bool String::empty() {
 	if (taille_==0) {
 		return true ;
@@ -32,11 +48,21 @@ bool String::empty() {
 	return false ;
 }
 
-String::~String() {
-	taille_=0;
-	capacite_=0;
-	delete chaine_;
-}
+void String::reserve(size_t taille) {
+	capacite_=taille;
+	char* nchaine=new char[taille];
+	char current=chaine_[0] ;
+	int i=0 ;
+	while (current!='\0') {
+		nchaine[i]=chaine_[i] ;
+		i=i+1;
+		current=chaine_[i] ;
+	}
+	nchaine[i]='\0';
+	delete chaine_ ;
+	chaine_=nchaine;
+} 
+
 
 //getters 
 char* String::c_str(){
@@ -47,6 +73,31 @@ size_t String::capacity(){
 	return capacite_;
 }
 
+size_t String::length(){
+  return taille_;
+}
+
+size_t String::max_size(){
+  return MAX_SIZE;
+  }
+size_t String::size(){
+  return taille_;
+}
+
+void String::resize (size_t n, char c){
+  if (n<taille_){
+    chaine_[n] = '\0';
+    taille_ =n;
+    }
+  else if (n>taille_){
+    for( int i = taille_; i<=n; i++){
+      reserve(n*2);
+      chaine_[i] = c;
+      taille_ =n;
+      }
+  }
+ }
+      
 /*String String::operator+(const String s1,const String s2) {
 	String result=String(s1) ;
 	
