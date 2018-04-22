@@ -13,16 +13,16 @@ String::String() {
 
 //constructeur par copie
 String::String(const String &s){
-	//
-	taille_=s.taille_;
-	capacite_=s.capacite_;
+	// les attributs du nouveau string ont les mêmes valeurs que le string dont l'adresse est passée en paramètre
+	taille_=s.taille_; //taille
+	capacite_=s.capacite_; //capacité
+	char* newchaine =new char[capacite_];
 	int i;
-	char* chain =new char[capacite_];
-  for (i=0;i<taille_;++i){
-  	chain[i] = s.chaine_[i];
+  for (i=0;i<taille_;++i){ //valeurs du tableau
+  	newchaine[i] = s.chaine_[i];
 	}
-  chain[taille_+1] = '\0';
-	chaine_=chain;
+  newchaine[taille_+1] = '\0'; //rajout du \0 au tableau du nouveau string
+	chaine_=newchaine; //chaîne
 }
 
 bool String::empty() {
@@ -40,7 +40,7 @@ String::~String() {
 
 //getters 
 char* String::c_str(){
-	return chaine_;
+	return chaine_; //récupère l'attribut chaîne du string considéré et le retourne
 }
 
 size_t String::capacity(){
@@ -78,34 +78,37 @@ String& String::operator=(const char* c1) {
 	}
 }
 
-String& String::operator= (const String& str){
+.
+String& String::operator=(const String& str){
 	// on supprime la chaine qui a été créée pour ne pas avoir de fuite mémoire
 	delete chaine_;
-	// on donne les mêmes valeurs des attributs 
-	taille_=str.taille_;
-	capacite_=str.capacite_;
+	// on donne les mêmes valeurs des attributs du string dont l'adresse est passée en paramètre
+	taille_=str.taille_; //taille
+	capacite_=str.capacite_; //capacité
 	char* newstr = new char [capacite_];
 	int i;
-	for (i=0;i<taille_;++i){
+	for (i=0;i<taille_;++i){ //valeurs du tableau	
   	newstr[i] = str.chaine_[i];
 	}
-	newstr[taille_+1] = '\0';
-	chaine_=newstr;
+	newstr[taille_+1] = '\0'; //rajout du \0 au tableau du nouveau string
+	chaine_=newstr; //chaîne
 	return *this;
 }
+
+// Renvoie un nouveau string dont la valeur est la concaténation d'un string existant et d'un caractère
 
 String operator+(const String& str, char c){
 	String s(str);
 	if(str.capacite_>=str.taille_+2){
 		s.taille_=s.taille_+1;
-		s.chaine_[s.taille_]=c;
-		s.chaine_[s.taille_+1]='\0';
+		s.chaine_[s.taille_-1]=c;
+		s.chaine_[s.taille_]='\0';
 	}
 	else{
 		s.reserve(s.taille_+2);
 		s.taille_=s.taille_+1;
-		s.chaine_[s.taille_]=c;
-		s.chaine_[s.taille_+1]='\0';
+		s.chaine_[s.taille_-1]=c;
+		s.chaine_[s.taille_]='\0';
 	}
 	return s;
 }
