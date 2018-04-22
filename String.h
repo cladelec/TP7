@@ -17,6 +17,7 @@ class String {
 		String();
 		String(const String &s);
 		String(char* ch);
+    ~String();
 
 		bool empty();
 		
@@ -25,8 +26,10 @@ class String {
 		size_t size();
 		char* c_str();
 		size_t capacity();
+		size_t max_size();
 		
 		void reserve(size_t taille) ;
+		void resize (size_t n, char c);
 		void operator=(String s);
 		//void operator+(char c);
 		//operateurs
