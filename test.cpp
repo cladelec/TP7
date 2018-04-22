@@ -52,10 +52,20 @@ int main () {
 	s6.affichage() ;
 	printf("%d \n",s6.capacity());
 	printf("%d \n",s6.size()); //test size()
-	printf("%s \n",s6.c_str()); //test c_str()
+	printf("%s \n",s6.c_str()); //test c_str() <-> méthode affichage
 
 	s5.clear(); // test clear()
-	s5.affichage(); //renvoie un vide -> plus rien
+	s5.affichage(); // affiche un vide -> plus rien dans tableau (car 1er terme = \0)
 	
+	String s7(s3); // nouveau String = "salut" (par copie)
+	s7.affichage();
+	s7=s6; // test Operateur =(string)
+	s6.affichage();
+	s7.affichage(); // affiche bien "salutabc" comme ligne précédente
+
+	char c1='d';
+	String s8; // nouveau String (par défaut)
+	s8=s4+c1; //test Operateur +(char)
+	s8.affichage(); // affiche bien abcd
 
 }
