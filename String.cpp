@@ -52,7 +52,7 @@ String::~String() {
 
 //getters 
 char* String::c_str(){
-	return chaine_; //récupère l'attribut chaîne du string considéré et le retourne
+	return chaine_; //récupère l'attribut chaine du string considéré et le retourne
 }
 
  //retourne la capacité
@@ -170,7 +170,7 @@ String& String::operator=(const char* c1) {
 	}
 }
 
-
+//Operateur =(string) : Affecte de nouvelles valeurs au string, en remplaçant son contenu actuel par les valeurs d'un string dont l'adresse est passée en paramètre 
 String& String::operator=(const String& str){
 	// on supprime la chaine qui a été créée pour ne pas avoir de fuite mémoire
 	delete chaine_;
@@ -187,17 +187,16 @@ String& String::operator=(const String& str){
 	return *this;
 }
 
-// Operateur +(char) : Renvoie un nouveau string dont la valeur est la concaténation d'un string existant et d'un caractère donnés en paramètre
-
+//Operateur +(char) : Renvoie un nouveau string dont la valeur est la concaténation d'un string existant et d'un caractère donnés en paramètre
 String operator+(const String& str, char c){
-	String s(str);
-	if(str.capacite_>=str.taille_+2){
+	String s(str); //nouveau string identique au string auquel on veut rajouter un caractère grâce au constructeur par copie
+	if(s.capacite_>=s.taille_+2){ //vérification que la capacité du string créé est suffisante pour ajouter un nouveau caractère (il faut aussi rajouter \0 à la fin donc +2)
 		s.taille_=s.taille_+1;
-		s.chaine_[s.taille_-1]=c;
-		s.chaine_[s.taille_]='\0';
+		s.chaine_[s.taille_-1]=c; //on rajoute le caractère à la fin
+		s.chaine_[s.taille_]='\0'; //on rajoute le \0 à l afin du tableau
 	}
-	else{
-		s.reserve(s.taille_+2);
+	else{ //la capacité est insuffisante, il faut donc l'augmenter
+		s.reserve(s.taille_+2); //augmentation de 2 pour avoir la place pour le nouveau caractère et le \0
 		s.taille_=s.taille_+1;
 		s.chaine_[s.taille_-1]=c;
 		s.chaine_[s.taille_]='\0';

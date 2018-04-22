@@ -51,6 +51,11 @@ int main () {
 	
 	s6.affichage() ;
 	printf("%d \n",s6.capacity());
-	printf("%d \n",s6.size());
+	printf("%d \n",s6.size()); //test size()
+	printf("%s \n",s6.c_str()); //test c_str()
+
+	s5.clear(); // test clear()
+	s5.affichage(); //renvoie un vide -> plus rien
+	
 
 }
