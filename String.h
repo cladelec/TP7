@@ -25,11 +25,13 @@ class String {
 		size_t size();
 		char* c_str();
 		size_t capacity();
+		size_t max_size() ;
 		
 		void reserve(size_t taille) ;
 		bool empty();
 		void clear();
 		void affichage() ; //méthode de test
+		void resize (size_t n, char c) ;
 		
 
 		//operateurs
