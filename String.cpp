@@ -40,6 +40,11 @@ String::String(const String &s){
 	chaine_=chain;
 }
 
+String::~String() {
+  delete chaine_;
+  taille_=0;
+  capacite_=0;
+}
 
 bool String::empty() {
 	if (taille_==0) {
@@ -47,21 +52,6 @@ bool String::empty() {
 	}
 	return false ;
 }
-
-void String::reserve(size_t taille) {
-	capacite_=taille;
-	char* nchaine=new char[taille];
-	char current=chaine_[0] ;
-	int i=0 ;
-	while (current!='\0') {
-		nchaine[i]=chaine_[i] ;
-		i=i+1;
-		current=chaine_[i] ;
-	}
-	nchaine[i]='\0';
-	delete chaine_ ;
-	chaine_=nchaine;
-} 
 
 
 //getters 
@@ -161,18 +151,33 @@ String operator+(const String& str, char c){
 	return s;
 }
 
+String& String::operator= (const char s){
+ /* String s(str);
+  	if(str.capacite_>=str.taille_+2){
+		s.taille_=s.taille_+1;
+		s.chaine_[s.taille_]=s;
+		s.chaine_[s.taille_+1]='\0';
+	}
+	else{
+		s.reserve(s.taille_+2);
+		s.taille_=s.taille_+1;
+		s.chaine_[s.taille_]=c;
+		s.chaine_[s.taille_+1]='\0';
+	}*/
+	return *this;
+}
+
+String operator+(const String& str, char* c) {
+  //String s() ;
+  return nullptr;
+}
+
 void String::clear(){
 	taille_=0;
 	chaine_[0]='\0';
 }
 
-size_t String::size(){
-  return taille_;
-}
 
-size_t String::length(){
-  return taille_;
-}
 
 void String::reserve(size_t taille) {
 	capacite_=taille;

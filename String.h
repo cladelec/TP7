@@ -27,16 +27,22 @@ class String {
 		size_t size();
 		char* c_str();
 		size_t capacity();
+		size_t max_size() ;
 		
 		void reserve(size_t taille) ;
+		void resize (size_t n, char c) ;
 		
 		//operateurs
 		String& operator= (const String& str);
 		friend String operator+(const String& str, char c);
+		friend String operator+(const String& str, char* c);
 		String operator+(const String s1);
 		String& operator=(const char* c1);
+		String& operator=(const char s);
 
 
 } ;
 String operator+(const String& str, char c);
+String operator+(const String& str, char* c);
+
 #endif
