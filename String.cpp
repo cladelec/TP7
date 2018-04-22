@@ -49,23 +49,6 @@ size_t String::length(){
 }
 
 
-
-String& String::operator=(const char* c1) {
-	int i=0;
-	while(c1[i]!='\0') {
-		++i;
-	}
-	taille_=i-1;
-	capacite_=i*2;
-	delete[] chaine_;
-	
-	chaine_=new char[capacite_] ;
-	
-	for(int i=0;i<taille_;i++) {	
-		chaine_[i]=c1[i] ;
-	}
-}
-
 //Regarde si le string est vide, retourne true si c'est le cas.
 //pas de paramètres : la méthode s'applique directement au string à tester
 bool String::empty() {
@@ -94,6 +77,13 @@ void String::reserve(size_t taille) {
 	
 } 
 
+//méthode de test
+void String::affichage() {
+	for (int i=0; i<taille_; ++i) {
+		printf("&c", chaine_[i]);
+	}
+	printf("\n") ;
+}
 
 
 //OPERATEURS
