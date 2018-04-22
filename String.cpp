@@ -206,23 +206,29 @@ String operator+(const String& str, char c){
 }
 
 String& String::operator= (const char s){
- /* String s(str);
-  	if(str.capacite_>=str.taille_+2){
-		s.taille_=s.taille_+1;
-		s.chaine_[s.taille_]=s;
-		s.chaine_[s.taille_+1]='\0';
-	}
-	else{
-		s.reserve(s.taille_+2);
-		s.taille_=s.taille_+1;
-		s.chaine_[s.taille_]=c;
-		s.chaine_[s.taille_+1]='\0';
-	}*/
-	return *this;
+	taille_=1;
+	capacite_=2;
+	delete[] chaine_; 
+	
+	chaine_=new char[capacite_] ; 
+	chaine_[0]=s;
+	chaine_[1]='\0';
 }
 
 String operator+(const String& str, char* c) {
-  //String s() ;
-  return nullptr;
+  String result=String(str) ; 
+  size_t i = 0;
+  while (c[i] != '\0') {
+    ++i;
+    }
+	result.taille_=str.taille_+i; 
+	result.reserve(str.capacite_+i*2); 
+	for (int j=0;j<i+1;j++) { 
+		result.chaine_[str.taille_+j]=c[j]; 
+	}
+	
+	return result;
 }
+  
+
 
