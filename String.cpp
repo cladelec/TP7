@@ -47,21 +47,6 @@ String::~String() {
 	delete chaine_;
 }
 
-void String::reserve(size_t taille) {
-	capacite_=taille;
-	char* nchaine=new char[taille];
-	char current=chaine_[0] ;
-	int i=0 ;
-	while (current!='\0') {
-		nchaine[i]=chaine_[i] ;
-		i=i+1;
-		current=chaine_[i] ;
-	}
-	nchaine[i]='\0';
-	delete chaine_ ;
-	chaine_=nchaine;
-} 
-
 
 //getters 
 char* String::c_str(){
