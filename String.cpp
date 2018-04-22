@@ -48,6 +48,8 @@ String::~String() {
 }
 
 
+
+
 //getters 
 char* String::c_str(){
 	return chaine_; //récupère l'attribut chaine du string considéré et le retourne
@@ -82,7 +84,7 @@ void String::resize (size_t n, char c){
       taille_ =n;
       }
   }
- }
+}  
 
 //Regarde si le string est vide, retourne true si c'est le cas.
 //pas de paramètres : la méthode s'applique directement au string à tester
@@ -201,5 +203,31 @@ String operator+(const String& str, char c){
 	}
 	return s;
 }
+
+String& String::operator= (const char s){
+	taille_=1;
+	capacite_=2;
+	delete[] chaine_; 
+	
+	chaine_=new char[capacite_] ; 
+	chaine_[0]=s;
+	chaine_[1]='\0';
+}
+
+String operator+(const String& str, char* c) {
+  String result=String(str) ; 
+  size_t i = 0;
+  while (c[i] != '\0') {
+    ++i;
+    }
+	result.taille_=str.taille_+i; 
+	result.reserve(str.capacite_+i*2); 
+	for (int j=0;j<i+1;j++) { 
+		result.chaine_[str.taille_+j]=c[j]; 
+	}
+	
+	return result;
+}
+  
 
 

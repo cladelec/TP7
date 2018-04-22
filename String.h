@@ -17,9 +17,9 @@ class String {
 		String();
 		String(const String &s);
 		String(char* ch);
-		
+
 		~String() ; //destructeur
-		
+
 		//getters
 		size_t length();
 		size_t size();
@@ -37,15 +37,18 @@ class String {
 		//operateurs
 		friend String operator+(const String& s1, const String& s2) ;
 		friend String operator+(const String& str, char c);		
-			
+		friend String operator+(const String& str, char* c);
+	
 		String& operator=(const char* c1) ;
 		String& operator= (const String& str);
+		String& operator=(const char s);
 
 
 } ;
 
 
 String operator+(const String& str, char c);
+String operator+(const String& str, char* c);
 String operator+(const String& s1, const String& s2) ;
 
 #endif
