@@ -17,26 +17,26 @@ class String {
 		String();
 		String(const String &s);
 		String(char* ch);
-    ~String();
 
 		bool empty();
-		
+		~String() ; //destructeur
+		void clear();
+
 		//getters
 		size_t length();
 		size_t size();
 		char* c_str();
 		size_t capacity();
-		size_t max_size();
 		
 		void reserve(size_t taille) ;
-		void resize (size_t n, char c);
-		void operator=(String s);
-		//void operator+(char c);
+		
 		//operateurs
-		//String operator+(const String s1) ;
-		String& operator=(const char* c1) ;
+		String& operator= (const String& str);
+		friend String operator+(const String& str, char c);
+		String operator+(const String s1);
+		String& operator=(const char* c1);
 
 
 } ;
-
+String operator+(const String& str, char c);
 #endif
