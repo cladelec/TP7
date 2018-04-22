@@ -34,10 +34,12 @@ String::~String() {
 char* String::c_str(){
 	return chaine_;
 }
+
  //retourne la capacité
 size_t String::capacity(){
 	return capacite_;
 }
+
 
 size_t String::size(){
   return taille_;
@@ -49,6 +51,8 @@ size_t String::length(){
 }
 
 
+
+
 //Regarde si le string est vide, retourne true si c'est le cas.
 //pas de paramètres : la méthode s'applique directement au string à tester
 bool String::empty() {
@@ -57,6 +61,8 @@ bool String::empty() {
 	}
 	return false ;
 }
+
+
 
 //Realloue de la mémoire pour un tableau de char de la taille passée en paramètre
 //paramètres : un size_t de la taille à allouer
@@ -77,6 +83,13 @@ void String::reserve(size_t taille) {
 	
 } 
 
+
+void String::clear(){
+	taille_=0;
+	chaine_[0]='\0';
+}
+
+
 //méthode de test
 void String::affichage() {
 	for (int i=0; i<taille_; ++i) {
@@ -84,7 +97,6 @@ void String::affichage() {
 	}
 	printf("\n") ;
 }
-
 
 //OPERATEURS
 
@@ -118,35 +130,26 @@ String& String::operator=(const char* c1) {
 	}
 }
 
-
-void String::operator=(String s){
+String& String::operator= (const String& str){
 	delete chaine_;
-	taille_=s.size();
-	chaine_=s.c_str();
-	capacite_=s.capacity();
+	taille_=str.taille_;
+	chaine_=str.chaine_;
+	capacite_=str.capacite_;
 }
 
-/*void String::operator+(char c){
-	taille_=taille_+1;
-	chaine_=;
-	capacite_=0;
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+String operator+(const String& str, char c){
+	if(str.capacite_>=str.taille_+1){
+		String s(str);
+		s.taille_=s.taille_+1;
+		s.chaine_[s.taille_-1]=c;
+		s.chaine_[s.taille_]='\0';
+	}
+	else{
+		String s(str);
+		s.capacite_=s.capacite_+1;
+		s.taille_=s.taille_+1;
+		s.chaine_[s.taille_-1]=c;
+		s.chaine_[s.taille_]='\0';
+	}
+}
 
